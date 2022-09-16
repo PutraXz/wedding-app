@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
 use App\Models\Multipleuploads;
 use Illuminate\Http\Request;
 
@@ -14,7 +14,8 @@ class MultipleuploadsController extends Controller
      */
     public function index()
     {
-        return view('multipleuploads');
+        $name_urls = Post::all();
+        return view('multipleuploads', compact('name_urls'));
     }
     /**
      * Show the form for creating a new resource.
@@ -23,7 +24,7 @@ class MultipleuploadsController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -49,7 +50,8 @@ class MultipleuploadsController extends Controller
                     ];
                 }
             }
-            Multipleuploads::insert($files);
+            $name_urls = Post::all();
+            Multipleuploads::insert($files, $name_urls);
             echo'Success';
         }else{
             echo'Gagal';

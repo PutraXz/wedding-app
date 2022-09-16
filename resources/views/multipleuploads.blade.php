@@ -10,7 +10,15 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('uploads.store') }}" enctype="multipart/form-data">
                         @csrf
-
+                        <div class="form-group">
+                            <label for="">Name url</label>
+                            <select name="name_url" id="">
+                                <option disabled selected>Pilih</option>
+                                @foreach ($name_urls as $name_url)
+                                    <option value="{{$name_url->name_url}}">{{$name_url->name_url}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('File') }}</label>
 
