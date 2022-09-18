@@ -39,7 +39,6 @@ Route::get('/posts', function () {
 
 Route::get('/wedding/{post}', function (Post $post) {
     $multiuploads = Multipleuploads::where('name_url', $post->name_url)->get();
-
     return view('show', ['post' => $post, 'multiuploads' =>$multiuploads]);
 })->name('show');
 

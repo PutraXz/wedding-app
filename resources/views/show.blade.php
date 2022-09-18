@@ -44,7 +44,7 @@ $files = $files = [
 
 <body>
     @foreach ($multiuploads as $multiupload)
-        <img src="{{$multiupload->filename}}" alt="" class="img-responsive">
+        <img src="{{'/images/data-images/'. $multiupload->filename }}" alt="" class="img-responsive" >
     @endforeach
     {{-- <div id="float-calender" class="section-one">
         <div class="container">
@@ -598,8 +598,8 @@ Atas kehadiran dan doa restunya, kami mengucapkan terima kasih.</p>
         $(window).scroll(function() {
             addSticky();
         });
-    </script> -->
+    </script> --> --}}
 </body>
 
-</html> --}}
+</html>
 
