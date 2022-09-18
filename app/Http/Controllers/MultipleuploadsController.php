@@ -25,6 +25,7 @@ class MultipleuploadsController extends Controller
     public function create()
     {
 
+
     }
 
     /**
@@ -46,16 +47,18 @@ class MultipleuploadsController extends Controller
                     $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$file->getClientOriginalName());
                     $file->move(public_path('images/data-images'), $filename);
                     $files[] = [
+                        'filename' => $file,
+                        'name_url' => $request->post('name_url'),
                         'filename' => $filename,
                     ];
                 }
             }
-            $name_urls = Post::all();
-            Multipleuploads::insert($files, $name_urls);
+            Multipleuploads::insert($files);
             echo'Success';
         }else{
             echo'Gagal';
         }
+
     }
 
     /**

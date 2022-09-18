@@ -43,7 +43,10 @@ $files = $files = [
 </head>
 
 <body>
-    <div id="float-calender" class="section-one">
+    @foreach ($multiuploads as $multiupload)
+        <img src="{{$multiupload->filename}}" alt="" class="img-responsive">
+    @endforeach
+    {{-- <div id="float-calender" class="section-one">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2 text-center mt-5">
@@ -598,5 +601,5 @@ Atas kehadiran dan doa restunya, kami mengucapkan terima kasih.</p>
     </script> -->
 </body>
 
-</html>
+</html> --}}
 

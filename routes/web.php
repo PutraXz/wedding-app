@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Post;
+use App\Models\Multipleuploads;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,7 +38,9 @@ Route::get('/posts', function () {
 })->name('posts');
 
 Route::get('/wedding/{post}', function (Post $post) {
-    return view('show', ['post' => $post]);
+    $multiuploads = Multipleuploads::where('name_url', $post->name_url)->get();
+
+    return view('show', ['post' => $post, 'multiuploads' =>$multiuploads]);
 })->name('show');
 
 Route::get('/multipleuploads', 'App\Http\Controllers\MultipleuploadsController@index')->name('uploads');
