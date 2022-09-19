@@ -20,6 +20,8 @@ $files = $files = [
 <html lang="en">
 
 <head>
+    <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Estonia" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
@@ -43,14 +45,16 @@ $files = $files = [
 </head>
 
 <body>
-    @foreach ($multiuploads as $multiupload)
+    {{-- @foreach ($multiuploads as $multiupload)
         <img src="{{'/images/data-images/'. $multiupload->filename }}" alt="" class="img-responsive" >
-    @endforeach
-    {{-- <div id="float-calender" class="section-one">
+    @endforeach --}}
+    <div id="float-calender" class="section-one">
+        <img src="/images/image(1).png" alt="" class="img-one">
+        <img src="/images/image(2).png" alt="" class="img-two">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2 text-center mt-5">
-                    <h2 class="mt-5">The Wedding Of</h2>
+                <div class="col-md-8 offset-md-2 text-center ">
+                    <h2>The Wedding Of</h2>
                 </div>
             </div>
             <div class="row">
@@ -176,12 +180,38 @@ $files = $files = [
         </div>
     </div>
     <div id="float-galery" class="section-four">
-        <img src="/images/top-2.svg" alt="" class="image-top">
-        <img src="/imagesbottom-2.svg" alt="" class="image-bottom">
+        <img src="/images/top-2.svg" alt="" class="image-top ">
+        <img src="/images/bottom-2.svg" alt="" class="image-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-2">
-
+                <div class="col-md-8 offset-2 text-center mt-5">
+                    <h2 class="mt-5">Galeri Foto</h2>
+                    <h3 style="color: #bf9b73">Khitbah Day - 07 November 2021</h3>
+                </div>
+            </div>
+            <div class="row row-bottom-padded-md animate-box">
+                <div class="col-md-12">
+                    <div id="carouselExampleInterval" class="carousel carousel-dark slide " data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                           @php $i = 1; @endphp
+                            @foreach ($multiuploads as $multiupload)
+                            <div class="carousel-item {{ $i == '1' ? 'active':''}}" data-bs-interval="10000">
+                                @php $i++; @endphp
+                                <img src="{{'/images/data-images/'. $multiupload->filename }}" class="d-block mx-auto" alt="..." style="width: 50%">
+                                    <div class="carousel-caption d-none d-md-block">
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -245,52 +275,55 @@ $files = $files = [
             <div class="row">
                 <div class="col-md-8 offset-md-2 mt-5">
                     <h2 class="text-center mt-5">Buku Tamu Undangan</h2>
+                    <button type="button" class="btn btn-primary mx-auto d-block mb-4" data-bs-toggle="modal" data-bs-target="#modalForm">
+                        Kartu Ucapan Online
+                    </button>
+                <!-- Modal -->
+                <div class="modal fade" id="modalForm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Bootstrap 5 Modal Form</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST" action="{{ route('greets.store') }}">
+                                    @csrf
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control"  name="name_url" value="{{$post->name_url}}" hidden/>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Dari:</label>
+                                        <input type="text" class="form-control" name="from" value="{{ old('from') }}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Kata Untuk Pengantin:</label>
+                                        <input type="text" class="form-control" name="type" value="{{ old('type') }}">
+                                    </div>
+                                    <div class="modal-footer d-block">
+                                        <button type="submit" class="btn btn-primary float-end">{{ __('Upload') }}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                     <p class="text-center" style="color:#bf9b73">DOA RESTU ANDA MERUPAKAN KARUNIA YANG SANGAT BERARTI BAGI KAMI.</p>
                 </div>
                 <div class="col-md-8 offset-md-3 d-flex">
                 <div id="carousel">
             <div class="p-wrapper">
                 <section class="panel_a">
+                    @foreach ($greetings as $greeting)
                     <div class="item-list">
                         <div class="title">
-                            <h3>1</h3>
+                            <h3>{{$greeting->from}}</h3>
                         </div>
                         <div class="description">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis laudantium dolorem beatae ad repellat unde, explicabo maxime iure necessitatibus, repudiandae numquam quisquam suscipit harum velit at tempora exercitationem quibusdam sit!</p>
+                            <p>{{$greeting->type}}</p>
                         </div>
                     </div>
-                    <div class="item-list ">
-                        <div class="title">
-                            <h3>1</h3>
-                        </div>
-                        <div class="description">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis laudantium dolorem beatae ad repellat unde, explicabo maxime iure necessitatibus, repudiandae numquam quisquam suscipit harum velit at tempora exercitationem quibusdam sit!</p>
-                        </div>
-                    </div>
-                    <div class="item-list ">
-                        <div class="title">
-                            <h3>1</h3>
-                        </div>
-                        <div class="description">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis laudantium dolorem beatae ad repellat unde, explicabo maxime iure necessitatibus, repudiandae numquam quisquam suscipit harum velit at tempora exercitationem quibusdam sit!</p>
-                        </div>
-                    </div>
-                    <div class="item-list ">
-                        <div class="title">
-                            <h3>1</h3>
-                        </div>
-                        <div class="description">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis laudantium dolorem beatae ad repellat unde, explicabo maxime iure necessitatibus, repudiandae numquam quisquam suscipit harum velit at tempora exercitationem quibusdam sit!</p>
-                        </div>
-                    </div>
-                    <div class="item-list ">
-                        <div class="title">
-                            <h3>1</h3>
-                        </div>
-                        <div class="description">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis laudantium dolorem beatae ad repellat unde, explicabo maxime iure necessitatibus, repudiandae numquam quisquam suscipit harum velit at tempora exercitationem quibusdam sit!</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </section>
             </div> <!-- // .p-wrapper -->
         </div> <!-- // #carousel -->
@@ -299,11 +332,14 @@ $files = $files = [
         </div>
     </div>
     <div id="float-footer" class="section-eight">
+        <img src="/images/image(1).png" alt="" class="img-one">
+        <img src="/images/image(2).png" alt="" class="img-two">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-md-2 mt-5 mx-auto d-block">
-                    <p class="text-center">Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
-Atas kehadiran dan doa restunya, kami mengucapkan terima kasih.</p>
+                <div class="col-md-8 offset-md-2 mt-2 mx-auto d-block">
+                    <p class="text-center my-5">Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu. Atas kehadiran dan doa restunya, kami mengucapkan terima kasih.
+                    <h3 style="color: #bf9b73" class="text-center">Wassalamu'alaikum Wr. Wb.</h3>
+                    </p>
                 </div>
             </div>
         </div>
@@ -440,165 +476,6 @@ Atas kehadiran dan doa restunya, kami mengucapkan terima kasih.</p>
             addSticky();
         });
     </script>
-
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2 d-flex">
-                <div class="main mx-auto d-block mt-5">
-                    <div id='content'>
-                        <section>
-                            <ul id="countdown">
-                                <li class="hari"><span class="days timenumbers pt-4">00</span>
-                                    <p class="timeRefDays timedescription pt-2 pb-2">days</p>
-                                </li>
-                                <li><span class="hours timenumbers  pt-4">00</span>
-                                    <p class="timeRefHours timedescription pt-2 pb-2">hours</p>
-                                </li>
-                                <li><span class="minutes timenumbers pt-4">00</span>
-                                    <p class="timeRefMinutes timedescription pt-2 pb-2">minutes</p>
-                                </li>
-                                <li><span class="seconds timenumbers yellow-text pt-4">00</span>
-                                    <p class="timeRefSeconds timedescription pt-2 pb-2">seconds</p>
-                                </li>
-                            </ul>
-                        </section>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        (function($) {
-            $.fn.countdown = function(options, callback) {
-                //custom 'this' selector
-                thisEl = $(this);
-
-                // array of custom settings
-                var settings = {
-                    'date': null,
-                    'format': null
-                };
-
-                // append the settings array to options
-                if (options) {
-                    $.extend(settings, options);
-                }
-
-                //create the countdown processing function
-                function countdown_proc() {
-                    var eventDate = Date.parse(settings.date) / 1000;
-                    var currentDate = Math.floor($.now() / 1000);
-
-                    if (eventDate <= currentDate) {
-                        callback.call(this);
-                        clearInterval(interval);
-                    }
-
-                    var seconds = eventDate - currentDate;
-
-                    var days = Math.floor(seconds / (60 * 60 * 24));
-                    //calculate the number of days
-
-                    seconds -= days * 60 * 60 * 24;
-                    //update the seconds variable with number of days removed
-
-                    var hours = Math.floor(seconds / (60 * 60));
-                    seconds -= hours * 60 * 60;
-                    //update the seconds variable with number of hours removed
-
-                    var minutes = Math.floor(seconds / 60);
-                    seconds -= minutes * 60;
-                    //update the seconds variable with number of minutes removed
-
-                    //conditional statements
-                    if (days == 1) {
-                        thisEl.find(".timeRefDays ").text("day ");
-                    } else {
-                        thisEl.find(".timeRefDays ").text("Hari ");
-                    }
-                    if (hours == 1) {
-                        thisEl.find(".timeRefHours ").text("hour ");
-                    } else {
-                        thisEl.find(".timeRefHours ").text("Jam ");
-                    }
-                    if (minutes == 1) {
-                        thisEl.find(".timeRefMinutes ").text("minute ");
-                    } else {
-                        thisEl.find(".timeRefMinutes ").text("Menit ");
-                    }
-                    if (seconds == 1) {
-                        thisEl.find(".timeRefSeconds ").text("second ");
-                    } else {
-                        thisEl.find(".timeRefSeconds ").text("Detik ");
-                    }
-
-                    //logic for the two_digits ON setting
-                    if (settings.format == "on ") {
-                        days = (String(days).length >= 2) ? days : "0 " + days;
-                        hours = (String(hours).length >= 2) ? hours : "0 " + hours;
-                        minutes = (String(minutes).length >= 2) ? minutes : "0 " + minutes;
-                        seconds = (String(seconds).length >= 2) ? seconds : "0 " + seconds;
-                    }
-
-                    //update the countdown's html values.
-                    thisEl.find(".days ").text(days);
-                    thisEl.find(".hours ").text(hours);
-                    thisEl.find(".minutes ").text(minutes);
-                    thisEl.find(".seconds ").text(seconds);
-                }
-
-                //run the function
-                countdown_proc();
-
-                //loop the function
-                interval = setInterval(countdown_proc, 1000);
-            };
-
-        })(jQuery);
-
-
-
-        //Provide the plugin settings
-        $("#countdown ").countdown({
-                //The countdown end date
-                date: "31 August 2022 12:00:00 ",
-
-                // on (03:07:52) | off (3:7:52) - two_digits set to ON maintains layout consistency
-                format: "on "
-            },
-
-            function() {
-                // This will run when the countdown ends
-                alert("We 're Out Now");
-            });
-
-
-        function setHeights() {
-            var windowHeight = $(window).height();
-            $('.slide ').height(windowHeight);
-        }
-
-        setHeights();
-
-        $(window).resize(function() {
-            setHeights();
-        });
-
-        function addSticky() {
-            $('.slide ').each(function() {
-                var scrollerAnchor = $(this).offset().top;
-                if (window.scrollY >= scrollerAnchor) {
-                    $(this).addClass('fix-it ');
-                } else {
-                    $(this).removeClass('fix-it ');
-                }
-            });
-        }
-
-        $(window).scroll(function() {
-            addSticky();
-        });
-    </script> --> --}}
 </body>
 
 </html>

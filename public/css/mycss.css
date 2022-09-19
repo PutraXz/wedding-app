@@ -11,6 +11,18 @@ body {
     color: #828282;
 }
 
+#float-calender,
+#float-couple,
+#float-event,
+#float-galery,
+#float-ayat,
+#ffloat-protocol,
+#float-guest,
+#float-footer {
+    padding: 3em 0;
+    clear: both;
+}
+
 @media screen and (max-width: 768px) {
     #float-calender,
     #float-couple,
@@ -21,6 +33,7 @@ body {
     #float-guest,
     #float-footer {
         padding: 3em 0;
+        clear: both;
     }
 }
 
@@ -126,9 +139,33 @@ body {
 }
 
 .section-one {
-    background-image: url('/images/vecteezy_Floral-background_ap1220.jpg');
+    background: #FEE5DF;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-eight {
+    background: #FEE5DF;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-one {
+    top: 82px;
+    left: 50%;
+    position: absolute;
+    transform: translate(13%, 37%);
+}
+
+.img-two {
+    position: absolute;
+    top: -82px;
+    left: -50%;
+    transform: translate(44%, -1%);
 }
 
 h1 {
@@ -136,7 +173,7 @@ h1 {
     margin-bottom: 10px;
     line-height: 1.5;
     font-weight: normal;
-    color: rgb(16, 200, 233);
+    color: #708393;
     font-family: "Satisfy", Arial, serif;
 }
 
@@ -299,12 +336,17 @@ li,
     font-size: 60px;
     margin-bottom: 10px;
     line-height: 1.5;
-    color: rgb(16, 200, 233);
+    color: #1A2534;
     font-family: "Dancing Script", Arial, serif
 }
 
 .section-one p {
-    color: rgb(226, 203, 168);
+    color: #3A4668;
+}
+
+#countdown p {
+    color: #fff;
+    font-weight: 300;
 }
 
 .section-two h2 {
@@ -327,9 +369,26 @@ li,
 }
 
 .section-four {
-    background: url('/image/so-white.png');
-    background-size: cover;
+    background: url('/images/so-white.png');
     background-repeat: repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-top {
+    height: 300px;
+    top: 82px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+
+.image-bottom {
+    height: 300px;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    position: absolute;
 }
 
 #float-ayat {

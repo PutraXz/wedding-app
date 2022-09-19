@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSelectsTable extends Migration
+class CreateGreetingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateSelectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('selects', function (Blueprint $table) {
+        Schema::create('greetings', function (Blueprint $table) {
             $table->id();
-            $table->string('name_url', 50)->references('name_url')->on('posts')->onDelete('cascade');
+            $table->string('name_url', 50);
+            $table->string('from', 50);
+            $table->text('type');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateSelectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('selects');
+        Schema::dropIfExists('greetings');
     }
 }

@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Post;
 use App\Models\Multipleuploads;
+use App\Models\Greeting;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,13 +39,15 @@ Route::get('/posts', function () {
 })->name('posts');
 
 Route::get('/wedding/{post}', function (Post $post) {
+    $greetings = Greeting::where('name_url', $post->name_url)->get();
     $multiuploads = Multipleuploads::where('name_url', $post->name_url)->get();
-    return view('show', ['post' => $post, 'multiuploads' =>$multiuploads]);
+    return view('show', ['post' => $post, 'multiuploads' =>$multiuploads, 'greetings'=>$greetings]);
 })->name('show');
 
 Route::get('/multipleuploads', 'App\Http\Controllers\MultipleuploadsController@index')->name('uploads');
 Route::post('/save','App\Http\Controllers\MultipleuploadsController@store')->name('uploads.store');
-
+Route::get('/greetings','App\Http\Controllers\GreetingController@create')->name('greets');
+Route::post('/greeting', 'App\Http\Controllers\GreetingController@store')->name('greets.store');
 Route::get('/', function () {
     return view('welcome');
 });

@@ -17,7 +17,6 @@ class CreateMultipleuploadsTable extends Migration
             $table->id();
             $table->string('filename');
             $table->string('name_url', 50);
-            $table->foreign('name_url')->references('name_url')->on('posts')->onDelete('cascade');
             $table->timestamps();
         });
     }
