@@ -20,6 +20,8 @@ $files = $files = [
 <html lang="en">
 
 <head>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
     <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
@@ -29,7 +31,6 @@ $files = $files = [
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet'>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -37,8 +38,6 @@ $files = $files = [
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="jquery.countdown.min.js"></script>
     <link rel="stylesheet" href="{{asset('css/mycss.css')}}">
 
     <title>Document</title>
@@ -58,20 +57,20 @@ $files = $files = [
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8 offset-md-2 mt-4 float-heading">
+                <div class="col-md-8 offset-md-2 mt-md-4 float-heading">
                     <img src="/images/couple.jpg" class="rounded-circle mx-auto d-block couple" alt="100x100" style="width: 30%;">
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 offset-md-2 d-flex text-center"></div>
-                <h1 class="text-center mb-3 mt-3">{{$post->name_groom}} & {{$post->name_bride}}</h1>
+                <h1 class="text-center mb-3 mt-md-3">{{$post->name_groom}} & {{$post->name_bride}}</h1>
                 <p class="text-center">Kami berharap Anda menjadi bagian dari hari istimewa kami!</p>
             </div>
             <div class="row">
-                <div class="col-md-8 col-12 offset-md-2 ">
-                    <div class="main mx-auto d-block mt-5 mb-5">
+                <div class="col-md-8 col-12  offset-md-2 mx-auto d-block ">
+                    <div class="main mx-auto d-block  mb-5">
                         <section>
-                            <ul id="countdown" class="justify-content-between d-flex">
+                            <ul id="countdown" class="justify-content-center d-flex mx-auto ">
                                 <li class="hari"><span class="days timenumbers pt-4">00</span>
                                     <p class="timeRefDays timedescription pt-2 pb-2">days</p>
                                 </li>
@@ -103,7 +102,7 @@ $files = $files = [
             <div class="couple-wrap">
                 <div class="couple-half">
                     <div class="groom">
-                        <img src="/images/molid-square.jpg" alt="" class="img-responsive">
+                        <img src="/images/molid-square.jpg" alt="" class="img-fluid d-block mx-auto">
                     </div>
                     <div class="desc-groom">
                         <h3>Rayhan Yulanda</h3>
@@ -116,7 +115,7 @@ $files = $files = [
                 </div>
                 <div class="couple-half ">
                     <div class="bride">
-                        <img src="/images/rehan-square.jpg" alt="" class="img-responsive">
+                        <img src="/images/rehan-square.jpg" alt="" class="img-fluid d-block mx-auto">
                     </div>
                     <div class="desc-bride">
                         <h3>Ayu Lestari</h3>
@@ -132,23 +131,23 @@ $files = $files = [
     </div>
     <div id="float-event" class="section-three">
         <div class="container">
-            <div class="row my-5 d-block ">
-                <div class="col-md-8 offset-md-2 mt-5 text-center">
+            <div class="row ">
+                <div class="col-md-8 offset-md-2 mt-md-4 text-center">
                     <h1 class="mx-auto d-block">Save The Date</h1>
                 </div>
             </div>
-            <div class="row d-block mb-5">
-                <div class="col-md-10 offset-md-1 d-flex justify-content-end">
-                    <div class="col-md-6 col-sm-6 col-6 text-center ">
-                        <div class="event-wrap animate-box">
-                            <h3 style="font-family: 'Oswald', Arial, serif;">Akad Nikah</h3>
+            <div class="row">
+                <div class="col-md-10 offset-md-1 d-md-flex ">
+                    <div class="col-md-6 col-sm-6 text-center mx-2">
+                        <div class="event-wrap">
+                            <h3 style="font-family: 'Oswald', Arial, serif;" class="">Akad Nikah</h3>
                             <div class="event-col">
-                                <i class="icon-clock"></i>
+                                <i class='bx bx-time-five'></i>
                                 <span>09:00</span>
                                 <span>Selesai</span>
                             </div>
                             <div class="event-col">
-                                <i class="icon-calendar"></i>
+                                <i class='bx bx-calendar-week'></i>
                                 <span>Jumat</span>
                                 <span class="tanggal">20 Mei 2022</span>
                             </div>
@@ -157,21 +156,20 @@ $files = $files = [
                             <a href="https://goo.gl/maps/kSZez6MQC8SDNevM7" target="_blank" class="btn btn-primary">Penunjuk Lokasi <i class="icon-map2"></i></a>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-6 text-center">
-                        <div class="event-wrap animate-box">
+                    <div class="col-md-6 col-sm-6 text-center mx-2">
+                        <div class="event-wrap ">
                             <h3 style="font-family: 'Oswald', Arial, serif;">Walimatul 'Ursy</h3>
                             <div class="event-col">
-                                <i class="icon-clock"></i>
+                                <i class='bx bx-time-five'></i>
                                 <span>11:00</span>
                                 <span>Selesai</span>
                             </div>
                             <div class="event-col">
-                                <i class="icon-calendar"></i>
+                                <i class='bx bx-calendar-week'></i>
                                 <span>Sabtu</span>
                                 <span class="tanggal">21 Mei 2022</span>
                             </div>
                             <p style="font-family: 'Courgette', Arial, serif">Alamat : Amel Convention Hall, Jl. Prof. Ali Hasyimi, Lamteh, Kec. Ulee Kareng, Banda Aceh</p>
-
                             <a href="https://goo.gl/maps/c8UZnR3s92rDSDEp8" target="_blank" class="btn btn-primary">Penunjuk Lokasi <i class="icon-map2"></i></a>
                         </div>
                     </div>
@@ -184,9 +182,9 @@ $files = $files = [
         <img src="/images/bottom-2.svg" alt="" class="image-bottom">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 offset-2 text-center mt-5">
-                    <h2 class="mt-5">Galeri Foto</h2>
-                    <h3 style="color: #bf9b73">Khitbah Day - 07 November 2021</h3>
+                <div class="col-md-8 offset-md-2 mt-5">
+                    <h2 class="mt-5 text-center">Galeri Foto</h2>
+                    <h3 style="color: #bf9b73" class="text-center">Khitbah Day - 07 November 2021</h3>
                 </div>
             </div>
             <div class="row row-bottom-padded-md animate-box">
