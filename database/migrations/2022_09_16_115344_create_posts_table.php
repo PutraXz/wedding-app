@@ -24,6 +24,8 @@ class CreatePostsTable extends Migration
             $table->text('child_bride');
             $table->text('father_bride');
             $table->text('mother_bride');
+            $table->text('image');
+            $table->text('date_count');
             $table->timestamps();
         });
     }

@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     overflow-x: hidden;
     font-family: "Yanone Kaffeesatz", Arial, sans-serif;
@@ -9,6 +13,29 @@ body {
     font-size: 16px;
     line-height: 1.7;
     color: #828282;
+}
+
+#overlay {
+    background: #ffffff;
+    background-image: url("/images/zoom-enchanted-forest-wedding-background.jpg");
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    overflow-y: hidden !important;
+}
+
+#overlay .content {
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 2001;
+    top: 0;
+    overflow-y: hidden !important;
 }
 
 #float-calender,
@@ -79,7 +106,6 @@ body {
 }
 
 @media screen and (max-width: 480px) {
-    #float-calender {}
     .couple-half .groom,
     .couple-half .bride {
         margin-left: 0 !important;
@@ -115,6 +141,22 @@ body {
     #float-calender h2 {
         font-size: 40px;
     }
+    #float-footer {
+        overflow: hidden;
+    }
+    #float-footer .img-one {
+        width: 62% !important;
+        bottom: -3vh !important;
+        transform: translate(21%, -10%) !important;
+    }
+    #float-footer .img-two {
+        width: 62%!important;
+        top: 1vh!important;
+        transform: translate(40%, -5%)!important;
+    }
+    #float-footer h2 {
+        font-size: 40px;
+    }
     #countdown {
         width: 283px;
         padding: 0 2px 0 34px;
@@ -141,6 +183,12 @@ body {
     }
     .carousel {
         height: 438px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .carousel {
+        height: 358px;
     }
 }
 
@@ -173,6 +221,25 @@ body {
     #float-calender h2 {
         font-size: 40px;
     }
+    #float-footer {
+        overflow: hidden;
+    }
+    #float-footer img {
+        margin-top: 0 !important;
+    }
+    #float-footer .img-one {
+        width: 40%;
+        bottom: 1vh;
+        transform: translate(59%, -73%);
+    }
+    #float-footer .img-two {
+        width: 40%;
+        top: 1vh;
+        transform: translate(90%, -5%);
+    }
+    #float-footer h2 {
+        font-size: 40px;
+    }
     #float-event .event-wrap {
         margin-bottom: 10px;
     }
@@ -199,7 +266,22 @@ body {
     }
 }
 
-@media screen and (min-width:768px) and (max-width: 928.98px) {
+@media screen and (min-width:505px) and (max-width: 928.98px) {
+    #float-footer p {
+        width: 90%;
+        margin: 0 auto;
+        display: block;
+    }
+    #float-footer .img-one {
+        width: 62% !important;
+        bottom: -3vh !important;
+        transform: translate(21%, -10%) !important;
+    }
+    #float-footer .img-two {
+        width: 62%!important;
+        top: 1vh!important;
+        transform: translate(40%, -5%)!important;
+    }
     .carousel-inner {
         padding: 7em 0 !important;
     }
@@ -237,7 +319,7 @@ body {
 }
 
 .section-eight {
-    background: #FEE5DF;
+    background: #7FBCD2;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -618,8 +700,71 @@ li,
     box-shadow: 0px 7px 6px #ccc;
 }
 
-#float-footer {
-    background-image: url('/images/horizontal-footer.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+iframe {
+    display: none;
+}
+
+.animated {
+    animation: fadeIn 5s;
+    -webkit-animation: fadeIn 5s;
+    -moz-animation: fadeIn 5s;
+    -o-animation: fadeIn 5s;
+    -ms-animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.reveal {
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
 }

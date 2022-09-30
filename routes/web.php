@@ -27,8 +27,31 @@ Route::post('/store', function (Request $request){
     $post->father_groom =  $request->father_groom;
     $post->mother_groom =  $request->mother_groom;
     $post->child_bride =  $request->child_bride;
-    $post->father_bride	 =  $request->father_bride	;
+    $post->father_bride	 =  $request->father_bride;
     $post->mother_bride =  $request->mother_bride;
+        $files= [];
+        $file = $request->file('image');
+        $filename=  round(microtime(true) * 1000).'-'.str_replace(' ','-',$file->getClientOriginalName());
+        $file->move(public_path('images/data-images'), $filename);
+        $data['image']= $filename;
+    $post->image = $filename;
+
+        $delimiters1 = ['-', 'T'];
+        $postt = $request->date_count;
+        $new = str_replace($delimiters1, $delimiters1[0], $postt);
+        $arr1 = explode($delimiters1[0], $new);
+
+        $arr = explode($delimiters1[0], $new);
+        $dateObj   = DateTime::createFromFormat('!m', $arr[1]);
+        $monthName = $dateObj->format('F');
+
+        $month=  $arr[0]." ";
+        $year =$monthName." ";
+        $day =$arr[2]." ";
+        $time =$arr[3].":00";
+        $send = $day.$year.$month.$time;
+
+    $post->date_count = strval($send);
     $post->save();
 
     return back();
@@ -55,3 +78,13 @@ Route::get('/', function () {
 Route::get('/wedding', function () {
     return view('wedding');
 });
+Route::group(['middleware' => 'cors'], function() {
+    Route::post('/api/your_url', function () {
+        return ['status'=>'success'];
+     });
+ });
+
+ Route::group(['middleware' => 'cors'], function() {
+    Route::post('/api/your_url','YourController@function' );
+
+ });

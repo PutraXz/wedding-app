@@ -12,8 +12,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="row g-3 align-items-center mt-5 mx-auto">
-            <form action="/store" method="POST">
+        <div class="row g-3 align-items-center mt-5 mx-auto" >
+            <form action="/store" method="POST" enctype="multipart/form-data">
                 @csrf
             <div class="input-group mb-3">
                 <div class="col-4">
@@ -69,6 +69,22 @@
                 </div>
                 <div class="col-3">
                     <input type="text" name="child_bride" class="form-control" placeholder="Anak Dari Ke-(Perempuan)">
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="col-4">
+                    <label for="date_count" class="col-form-label">date</label>
+                </div>
+                <div class="col-3">
+                    <input type="datetime-local" name="date_count" class="form-control" >
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="col-4">
+                    <label for="image" class="col-form-label">Image</label>
+                </div>
+                <div class="col-3">
+                    <input type="file" name="image" class="form-control" >
                 </div>
             </div>
             <div class="input-group mb-3">

@@ -23,7 +23,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('File') }}</label>
 
                             <div class="col-md-6">
-                                <input type="file" class="form-control" name="filename[]" required multiple>
+                                <input type="file" class="form-control" name="filename[]" >
                             </div>
                         </div>
 

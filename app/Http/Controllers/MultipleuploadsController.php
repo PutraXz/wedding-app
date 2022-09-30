@@ -44,6 +44,7 @@ class MultipleuploadsController extends Controller
             $files = [];
             foreach ($request->file('filename') as $file) {
                 if ($file->isValid()) {
+
                     $filename = round(microtime(true) * 1000).'-'.str_replace(' ','-',$file->getClientOriginalName());
                     $file->move(public_path('images/data-images'), $filename);
                     $files[] = [
