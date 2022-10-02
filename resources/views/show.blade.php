@@ -13,14 +13,10 @@ $files = $files = [
     ['width' => '90px;','h3' => 'Sholat','p' => 'Memperhatikan waktu shalat wajib dan tidak meninggalkannya','height' => '90px;','img' =>  '/images/protocol/rug.png ', 'color' => '#D9F7A1', 'padding'=> ' 10px;']
 ];
 ?>
-
 @section('title', $post->title)
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Estonia" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
@@ -35,35 +31,14 @@ $files = $files = [
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{asset('css/mycss.css')}}">
-    <script>
-        window.addEventListener('load', () => document.querySelector('.code-container').appendChild(document.createTextNode(document.querySelector('.source-code').innerText)));
-    </script>
-    <script class="source-code">
-        window.addEventListener('load', () => {
-            // noinspection JSUnresolvedVariable
-            let audioCtx = new(window.AudioContext || window.webkitAudioContext)();
-            let xhr = new XMLHttpRequest();
-            xhr.open('GET', '/audio/marry.mp3');
-            xhr.responseType = 'arraybuffer';
-            xhr.addEventListener('load', () => {
-                let playsound = (audioBuffer) => {
-                    let source = audioCtx.createBufferSource();
-                    source.buffer = audioBuffer;
-                    source.connect(audioCtx.destination);
-                    source.loop = true;
-                    source.start();
-
-                };
-
-                audioCtx.decodeAudioData(xhr.response).then(playsound);
-            });
-            xhr.send();
-        });
-    </script>
     <title>Document</title>
 </head>
-
-<body>
+<body class="model">
+    <audio id="Audio" loop>
+        <source src="/audio/marry.ogg" type="audio/ogg">
+        <source src="/audio/marry.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
    <div class="overlay" id="overlay">
         <div class="content">
             <div class="container">
@@ -76,7 +51,6 @@ $files = $files = [
                     <div class="col-md-12 offset-md-2 d-flex text-center"></div>
                     <h1 class="text-center mb-2" style="font-family: Satisfy, Arial, serif;color:#ECB390;font-weight: normal;font-size:48px;">{{$post->name_bride}} & {{$post->name_groom}}</h1>
                     <p class="text-center" style="font-family: Yanone Kaffeesatz, Arial, sans-serif; font-size: 18px;color: #CDB699;">Kepada Bapak/Ibu/Saudara/i<br> Kami Mengundang Anda Untuk Hadir Di Acara Pernikahan Kami.</p>
-
                 </div>
                 <button class="btn btn-primary d-flex justify-content-center align-content-center mx-auto d-block" id="open-invitation" style="border-radius: 30px;background-color: rgba(17, 52, 104, 0.8);border-color: rgba(17, 52, 104, 0.8);">Buka Undangan</button>
             </div>
@@ -530,9 +504,12 @@ $files = $files = [
         });
     </script>
   <script>
+    var x = document.getElementById("Audio");
         $(document).ready(function() {
             $('#open-invitation').click(function() {
                 $('#overlay').hide();
+                x.play();
+                $( "body" ).removeClass( "model" );
             })
         });
     </script>

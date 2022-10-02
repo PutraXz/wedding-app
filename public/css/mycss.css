@@ -7,13 +7,18 @@ html {
 }
 
 body {
-    overflow-x: hidden;
     font-family: "Yanone Kaffeesatz", Arial, sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.7;
     color: #828282;
 }
+
+body.model {
+    overflow: hidden;
+}
+
+body section {}
 
 #overlay {
     background: #ffffff;
