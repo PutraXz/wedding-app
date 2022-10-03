@@ -307,7 +307,7 @@ $files = $files = [
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form method="POST" action="{{ route('greets.store') }}">
+                                        <form id="greet" >
                                             @csrf
                                             <div class="mb-3">
                                                 <input type="text" class="form-control"  name="name_url" value="{{$post->name_url}}" hidden/>
@@ -321,7 +321,7 @@ $files = $files = [
                                                 <input type="text" class="form-control" name="type" value="{{ old('type') }}">
                                             </div>
                                             <div class="modal-footer d-block">
-                                                <button type="submit" class="btn btn-primary float-end">{{ __('Upload') }}</button>
+                                                <button type="button" class="btn btn-primary float-end" id="submit">{{ __('Upload') }}</button>
                                             </div>
                                         </form>
                                     </div>
@@ -332,21 +332,21 @@ $files = $files = [
                         </div>
                         <div class="col-md-8 offset-md-3 d-flex">
                         <div id="carousel">
-                    <div class="p-wrapper">
-                        <section class="panel_a">
-                            @foreach ($greetings as $greeting)
-                            <div class="item-list">
-                                <div class="title">
-                                    <h3>{{$greeting->from}}</h3>
-                                </div>
-                                <div class="description">
-                                    <p>{{$greeting->type}}</p>
-                                </div>
-                            </div>
-                            @endforeach
-                        </section>
-                    </div> <!-- // .p-wrapper -->
-                    </div> <!-- // #carousel -->
+                            <div class="p-wrapper">
+                                <section class="panel_a">
+                                     @foreach ($greetings as $greeting)
+                                        <div class="item-list">
+                                            <div class="title">
+                                                 <h3>{{$greeting->from}}</h3>
+                                             </div>
+                                            <div class="description">
+                                                <p>{{$greeting->type}}</p>
+                                             </div>
+                                        </div>
+                                    @endforeach
+                                </section>
+                            </div> <!-- // .p-wrapper -->
+                        </div> <!-- // #carousel -->
                         </div>
                     </div>
                 </div>
@@ -371,6 +371,36 @@ $files = $files = [
         </section>
         <div id="player"></div>
     </div>
+    <script>
+        $('#submit').click(function() {
+             console.log('clicked')
+             var data = $('#greet').serialize();
+             $.ajax({
+                method:'POST',
+                url:'{{ route('greets.store') }}',
+                data:data,
+                success:function(){
+                    // $('.section-seven').load("{{  url('/wedding/{post}') }}");
+                    data = data.split('&')
+                    var [ title, description ] = [data[2].split('=')[1], data[3].split('=')[1]]
+                     title = title.replace(/\+/g, ' ')
+                     description = description.replace(/\+/g, ' ')
+
+                     $('section.panel_a').append(`
+                        <div class="item-list">
+                        <div class="title">
+                            <h3>${title}</h3>
+                        </div>
+                        <div class="description">
+                            <p>${description}</p>
+                        </div>
+                        </div>
+                      `)
+                    $('#modalForm').modal('hide')
+                }
+             });
+        });
+    </script>
     <script>
         (function($) {
             $.fn.countdown = function(options, callback) {
